@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arnel Bruza // Professional Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0a0e1a 0%, #1a1a2e 35%, #16213e 100%);
+      color: #e8f4f8;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Animated background elements */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 50%, rgba(0, 229, 255, 0.03) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 20%, rgba(255, 193, 7, 0.03) 0%, transparent 50%),
+                  radial-gradient(circle at 40% 80%, rgba(0, 229, 255, 0.02) 0%, transparent 50%);
+      z-index: -1;
+      animation: bgShift 15s ease-in-out infinite alternate;
+    }
+
+    @keyframes bgShift {
+      0% { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
+
+    /* Professional Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(10, 14, 26, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 229, 255, 0.2);
+      padding: 20px 40px;
+      z-index: 1000;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .logo-section h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: #00e5ff;
+      text-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
+      margin-bottom: 5px;
+    }
+
+    .logo-section p {
+      font-size: 14px;
+      color: #94a3b8;
+      font-weight: 400;
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .nav-btn {
+      background: rgba(0, 229, 255, 0.1);
+      border: 1px solid rgba(0, 229, 255, 0.3);
+      color: #00e5ff;
+      padding: 10px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .nav-btn:hover {
+      background: rgba(0, 229, 255, 0.2);
+      box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
+      transform: translateY(-1px);
+    }
+
+    .nav-btn.primary {
+      background: linear-gradient(135deg, #00e5ff, #0288d1);
+      color: #000;
+      font-weight: 600;
+    }
+
+    .nav-btn.primary:hover {
+      background: linear-gradient(135deg, #26c6da, #00acc1);
+      box-shadow: 0 0 20px rgba(0, 229, 255, 0.4);
+    }
+
+    /* Main Content Area */
+    .main-content {
+      margin-top: 100px;
+      padding: 40px;
+      max-width: 1400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Professional Summary Card */
+    .summary-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(0, 229, 255, 0.2);
+      border-radius: 16px;
+      padding: 30px;
+      margin-bottom: 50px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .summary-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #00e5ff, #ffc107, #00e5ff);
+      animation: shimmer 3s linear infinite;
+    }
+
+    @keyframes shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    .summary-content {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .summary-text h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 15px;
+    }
+
+    .summary-text p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #cbd5e1;
+      margin-bottom: 20px;
+    }
+
+    .highlight-stats {
+      display: flex;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+
+    .stat-item {
+      text-align: left;
+    }
+
+    .stat-number {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: #00e5ff;
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Portfolio Cylinder - Custom SVG */
+    .portfolio-section {
+      text-align: center;
+      margin: 60px 0;
+    }
+
+    .section-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 28px;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 15px;
+    }
+
+    .section-subtitle {
+      font-size: 16px;
+      color: #94a3b8;
+      margin-bottom: 50px;
+    }
+
+    .cylinder-container {
+      position: relative;
+      display: inline-block;
+      margin: 0 auto;
+    }
+
+    .cylinder-svg {
+      width: 400px;
+      height: 400px;
+      filter: drop-shadow(0 0 20px rgba(0, 229, 255, 0.3));
+    }
+
+    .chamber-button {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: rgba(0, 229, 255, 0.1);
+      border: 2px solid rgba(0, 229, 255, 0.4);
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: rgba(0, 229, 255, 0.8);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .chamber-button:hover {
+      background: rgba(0, 229, 255, 0.2);
+      border-color: #00e5ff;
+      box-shadow: 0 0 25px rgba(0, 229, 255, 0.4);
+      transform: scale(1.1);
+      color: #ffffff;
+    }
+
+    .chamber-button.resume {
+      background: rgba(255, 193, 7, 0.1);
+      border-color: rgba(255, 193, 7, 0.4);
+      color: rgba(255, 193, 7, 0.9);
+    }
+
+    .chamber-button.resume:hover {
+      background: rgba(255, 193, 7, 0.2);
+      border-color: #ffc107;
+      box-shadow: 0 0 25px rgba(255, 193, 7, 0.4);
+      color: #ffffff;
+    }
+
+    /* Precise positioning for chambers */
+    .chamber-1 { top: 50px; left: 160px; }
+    .chamber-2 { top: 105px; left: 245px; }
+    .chamber-3 { top: 215px; left: 245px; }
+    .chamber-4 { top: 270px; left: 160px; }
+    .chamber-5 { top: 215px; left: 75px; }
+    .chamber-6 { top: 105px; left: 75px; }
+
+    .instruction-text {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #94a3b8;
+    }
+
+    /* Project Panel - Enhanced */
+    .project-panel {
+      position: fixed;
+      top: 50%;
+      right: -500px;
+      transform: translateY(-50%);
+      width: 450px;
+      max-height: 85vh;
+      background: rgba(15, 25, 35, 0.98);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(0, 229, 255, 0.3);
+      border-radius: 20px;
+      padding: 0;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
+      z-index: 999;
+    }
+
+    .project-panel.active {
+      right: 30px;
+    }
+
+    .panel-header {
+      background: linear-gradient(135deg, rgba(0, 229, 255, 0.1), rgba(255, 193, 7, 0.1));
+      padding: 25px;
+      border-bottom: 1px solid rgba(0, 229, 255, 0.2);
+      position: relative;
+    }
+
+    .panel-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: #ffffff;
+      margin: 0;
+      padding-right: 40px;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255, 68, 68, 0.2);
+      border: 1px solid rgba(255, 68, 68, 0.4);
+      color: #ff4444;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .close-btn:hover {
+      background: rgba(255, 68, 68, 0.3);
+      transform: scale(1.1);
+    }
+
+    .panel-content {
+      padding: 25px;
+      overflow-y: auto;
+      max-height: calc(85vh - 120px);
+    }
+
+    .panel-content::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .panel-content::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    .panel-content::-webkit-scrollbar-thumb {
+      background: rgba(0, 229, 255, 0.3);
+      border-radius: 3px;
+    }
+
+    .project-description {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #cbd5e1;
+      margin-bottom: 20px;
+    }
+
+    .tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 25px;
+    }
+
+    .tech-tag {
+      background: rgba(0, 229, 255, 0.1);
+      color: #00e5ff;
+      border: 1px solid rgba(0, 229, 255, 0.3);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 12px;
+    }
+
+    .project-btn {
+      flex: 1;
+      background: rgba(0, 229, 255, 0.1);
+      border: 1px solid rgba(0, 229, 255, 0.3);
+      color: #00e5ff;
+      padding: 12px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .project-btn:hover {
+      background: rgba(0, 229, 255, 0.2);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 229, 255, 0.2);
+    }
+
+    /* Resume specific styles */
+    .resume-section {
+      margin-bottom: 25px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(0, 229, 255, 0.1);
+    }
+
+    .resume-section:last-child {
+      border-bottom: none;
+    }
+
+    .resume-section h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: #ffc107;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .resume-item {
+      margin-bottom: 15px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .resume-item strong {
+      color: #00e5ff;
+      font-weight: 600;
+    }
+
+    .resume-item ul {
+      margin: 8px 0 0 20px;
+      color: #cbd5e1;
+    }
+
+    .resume-item li {
+      margin-bottom: 4px;
+    }
+
+    /* Footer */
+    footer {
+      background: rgba(10, 14, 26, 0.8);
+      border-top: 1px solid rgba(0, 229, 255, 0.2);
+      padding: 30px 40px;
+      text-align: center;
+      margin-top: 80px;
+    }
+
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 15px;
+    }
+
+    .footer-links a {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: #00e5ff;
+      text-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
+    }
+
+    .footer-text {
+      font-size: 12px;
+      color: #64748b;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .summary-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      
+      .project-panel.active {
+        right: 20px;
+        width: calc(100vw - 40px);
+        max-width: 450px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 20px;
+      }
+      
+      .nav-buttons {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      .main-content {
+        margin-top: 120px;
+        padding: 20px;
+      }
+      
+      .cylinder-svg {
+        width: 300px;
+        height: 300px;
+      }
+      
+      .chamber-button {
+        width: 60px;
+        height: 60px;
+        font-size: 9px;
+      }
+      
+      /* Adjusted positions for mobile */
+      .chamber-1 { top: 40px; left: 120px; }
+      .chamber-2 { top: 80px; left: 185px; }
+      .chamber-3 { top: 160px; left: 185px; }
+      .chamber-4 { top: 200px; left: 120px; }
+      .chamber-5 { top: 160px; left: 55px; }
+      .chamber-6 { top: 80px; left: 55px; }
+      
+      .project-panel.active {
+        right: 10px;
+        left: 10px;
+        width: calc(100vw - 20px);
+        max-width: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Professional Header -->
+  <header>
+    <div class="header-content">
+      <div class="logo-section">
+        <h1>ARNEL BRUZA</h1>
+        <p>Former Jr. Software Engineer @ DENSO TECHNO PH</p>
+      </div>
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="openProject('resume')">Resume</button>
+        <a href="mailto:bruzacmaestro@gmail.com" class="nav-btn primary">Contact Me</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    
+    <!-- Professional Summary -->
+    <div class="summary-card">
+      <div class="summary-content">
+        <div class="summary-text">
+          <h2>Software Engineer & Developer</h2>
+          <p>Magna Cum Laude Computer Science graduate currently working at DENSO TECHNO PH, developing embedded software for automotive systems. Experienced in full-stack development with expertise in C#, ASP.NET, and modern web technologies.</p>
+          <div class="highlight-stats">
+            <div class="stat-item">
+              <span class="stat-number">2024</span>
+              <span class="stat-label">Current Role</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">5+</span>
+              <span class="stat-label">Languages</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">MCL</span>
+              <span class="stat-label">Graduate</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">1st</span>
+              <span class="stat-label">Research Award</span>
+            </div>
+          </div>
+        </div>
+        <div class="summary-visual">
+          <!-- Professional accent design -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Portfolio Section -->
+    <div class="portfolio-section">
+      <h2 class="section-title">Project Portfolio</h2>
+      <p class="section-subtitle">Click on any chamber to explore my projects and professional experience</p>
+      
+      <div class="cylinder-container">
+        <!-- Custom SVG Cylinder -->
+        <svg class="cylinder-svg" viewBox="0 0 400 400">
+          <defs>
+            <linearGradient id="cylinderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#00e5ff;stop-opacity:0.2" />
+              <stop offset="50%" style="stop-color:#ffffff;stop-opacity:0.1" />
+              <stop offset="100%" style="stop-color:#00e5ff;stop-opacity:0.3" />
+            </linearGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+              <feMerge> 
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+          
+          <!-- Main cylinder body -->
+          <circle cx="200" cy="200" r="150" fill="url(#cylinderGrad)" stroke="#00e5ff" stroke-width="2" opacity="0.6" filter="url(#glow)"/>
+          
+          <!-- Chamber holes -->
+          <circle cx="200" cy="110" r="35" fill="rgba(0,0,0,0.4)" stroke="#00e5ff" stroke-width="1.5" opacity="0.8"/>
+          <circle cx="260" cy="150" r="35" fill="rgba(0,0,0,0.4)" stroke="#00e5ff" stroke-width="1.5" opacity="0.8"/>
+          <circle cx="260" cy="250" r="35" fill="rgba(0,0,0,0.4)" stroke="#00e5ff" stroke-width="1.5" opacity="0.8"/>
+          <circle cx="200" cy="290" r="35" fill="rgba(0,0,0,0.4)" stroke="#00e5ff" stroke-width="1.5" opacity="0.8"/>
+          <circle cx="140" cy="250" r="35" fill="rgba(0,0,0,0.4)" stroke="#00e5ff" stroke-width="1.5" opacity="0.8"/>
+          <circle cx="140" cy="150" r="35" fill="rgba(255,193,7,0.2)" stroke="#ffc107" stroke-width="2" opacity="0.9"/>
+          
+          <!-- Center hub -->
+          <circle cx="200" cy="200" r="25" fill="rgba(0,229,255,0.3)" stroke="#00e5ff" stroke-width="2" filter="url(#glow)"/>
+          <circle cx="200" cy="200" r="8" fill="#00e5ff"/>
+        </svg>
+        
+        <!-- Interactive Chamber Buttons -->
+        <div class="chamber-button chamber-1" onclick="openProject(1)">
+          <span>PROJECT</span>
+          <span>01</span>
+        </div>
+        <div class="chamber-button chamber-2" onclick="openProject(2)">
+          <span>PROJECT</span>
+          <span>02</span>
+        </div>
+        <div class="chamber-button chamber-3" onclick="openProject(3)">
+          <span>PROJECT</span>
+          <span>03</span>
+        </div>
+        <div class="chamber-button chamber-4" onclick="openProject(4)">
+          <span>PROJECT</span>
+          <span>04</span>
+        </div>
+        <div class="chamber-button chamber-5" onclick="openProject(5)">
+          <span>PROJECT</span>
+          <span>05</span>
+        </div>
+        <div class="chamber-button chamber-6 resume" onclick="openProject('resume')">
+          <span>RESUME</span>
+          <span>FILE</span>
+        </div>
+      </div>
+      
+      <p class="instruction-text">Interactive portfolio system • Click any chamber to explore</p>
+    </div>
+  </div>
+
+  <!-- Project Panel -->
+  <div class="project-panel" id="projectPanel">
+    <div class="panel-header">
+      <h2 class="panel-title" id="panelTitle">Project Title</h2>
+      <button class="close-btn" onclick="closePanel()">×</button>
+    </div>
+    <div class="panel-content" id="panelContent">
+      <!-- Content will be populated by JavaScript -->
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-links">
+        <a href="https://github.com/yourgithub" target="_blank">GitHub</a>
+        <a href="https://linkedin.com/in/yourlinkedin" target="_blank">LinkedIn</a>
+        <a href="mailto:bruzacmaestro@gmail.com">Email</a>
+        <a href="tel:+639184004550">Phone</a>
+      </div>
+      <p class="footer-text">© 2024 Arnel Bruza. Professional Software Developer Portfolio.</p>
+    </div>
+  </footer>
+
+  <script>
+    const projects = {
+1: {
+  title: "Facility Monitoring System",
+  description: "A web-based system designed to manage and monitor school facilities for students, teachers, and parents. It allows users to check, record, and organize facility information, supporting compliance with accreditation requirements. Built with C#, MySQL, and XAMPP, the system was evaluated using ISO25010 standards to ensure quality. Limitations include restricted image uploads per facility and account-based accessibility.",
+  technologies: ["C#", ".NET", "MySQL", "XAMPP", "Bootstrap"],
+  codeUrl: "https://github.com/arden37/FacilityMonitoring",
+  demoUrl: "https://drive.google.com/file/d/1G-SgB-oJ6lleupFoCtMgTkSUwrTlVJbu/view?usp=drive_link"
+},
+
+
+          2: {
+      title: "Real Estate Website (Frontend Recreation)",
+      description: "A static real estate website recreated to demonstrate modern webpage structuring, responsive navigation, and clean layout design. Includes sections for marketing plans, services, team info, property highlights, and contact details. Focused on applying HTML5 and CSS3 to build a professional-looking landing page for a real estate brand.",
+      technologies: ["HTML5", "CSS3", "Responsive Design"],
+      codeUrl: "https://github.com/arden37/FacilityMonitoring",
+      demoUrl: "#"
+    },
+
+     3: {
+  title: "Alumni Tracking System",
+  description: "A full-stack system built with ASP.NET Core MVC and Entity Framework using Code-First migrations. Enables schools to register, track, and manage alumni data with user accounts. Now configured to run on SQL Server Express LocalDB (built-in) so setup is simplified for local development.",
+  technologies: ["ASP.NET Core MVC", "Entity Framework Core", "C#", "SQL Server Express LocalDB", "Bootstrap", "AJAX"],
+  codeUrl: "https://github.com/arden37/AlumniTrackingSystem",
+  demoUrl: "#"  // or GitHub Pages / published link if available
+},
+
+      4: {
+  title: "Task Workflow Automation Engine",
+  description: "🚧 Project currently unavailable. This slot is reserved for future work or a project in progress.",
+  technologies: [],
+  codeUrl: "#",
+  demoUrl: "#"
+},
+5: {
+  title: "Professional Portfolio Website",
+  description: "🚧 Project currently unavailable. This slot is reserved for future work or a project in progress.",
+  technologies: [],
+  codeUrl: "#",
+  demoUrl: "#"
+},
+
+      resume: {
+        title: "Professional Resume",
+        isResume: true,
+        content: `
+          <div class="resume-section">
+            <h3>Professional Summary</h3>
+            <div class="resume-item">
+              <p>Magna Cum Laude Computer Science graduate with proven expertise in software development, data management, and IT systems. Currently serving as Jr. Software Engineer at DENSO TECHNO PH, developing embedded software for automotive systems using ANSI C. Strong background in full-stack development with proficiency in C#, ASP.NET, and modern web technologies.</p>
+            </div>
+          </div>
+
+          <div class="resume-section">
+            <h3>Current Position</h3>
+            <div class="resume-item">
+              <strong>Jr. Software Engineer</strong> - DENSO TECHNO PH<br>
+              <em>2024 - Present</em>
+              <ul>
+                <li>Develop and test embedded software using ANSI C for automotive control systems</li>
+                <li>Ensure compliance with international automotive industry standards (ISO 26262)</li>
+                <li>Collaborate with cross-functional international teams on safety-critical applications</li>
+                <li>Participate in code reviews and maintain high-quality coding standards</li>
+                <li>Work with automotive protocols and real-time embedded systems</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="resume-section">
+            <h3>Education</h3>
+            <div class="resume-item">
+              <strong>Bachelor of Science in Computer Science</strong><br>
+              Arellano University - Jose Rizal Campus (2023)<br>
+              <em>Magna Cum Laude Graduate</em><br>
+              <ul>
+                <li>College Dean's Lister (2019-2023) - Consistent academic excellence</li>
+                <li>Specialized in Software Engineering and Systems Development</li>
+                <li>Relevant Coursework: Data Structures, Algorithms, Database Systems, Software Engineering</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="resume-section">
+            <h3>Previous Experience</h3>
+            <div class="resume-item">
+              <strong>Digital Communication Administrative</strong> - Arellano University<br>
+              <em>2023</em>
+              <ul>
+                <li>Designed professional graphics, posters, and promotional materials for university events</li>
+                <li>Managed social media content strategy and community engagement</li>
+                <li>Edited photos and videos for marketing campaigns and documentation</li>
+                <li>Coordinated digital communications across multiple platforms</li>
+              </ul>
+            </div>
+            <div class="resume-item">
+              <strong>Order Collector & Inventory Assistant</strong> - MAC Trading Beverage Dealership<br>
+              <em>2015-2018</em>
+              <ul>
+                <li>Processed and organized customer orders via phone calls with high accuracy</li>
+                <li>Managed comprehensive inventory records for accurate stock tracking</li>
+                <li>Ensured timely order processing and coordination with suppliers</li>
+                <li>Developed efficient systems for data entry and inventory management</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="resume-section">
+            <h3>Technical Skills</h3>
+            <div class="resume-item">
+              <div class="tech-tags">
+                <span class="tech-tag">C#</span>
+                <span class="tech-tag">ASP.NET Core</span>
+                <span class="tech-tag">ANSI C</span>
+                <span class="tech-tag">C++</span>
+                <span class="tech-tag">Java</span>
+                <span class="tech-tag">PHP</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">SQL Server</span>
+                <span class="tech-tag">MySQL</span>
+                <span class="tech-tag">Entity Framework</span>
+                <span class="tech-tag">HTML5/CSS3</span>
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">Bootstrap</span>
+                <span class="tech-tag">.NET MVC</span>
+                <span class="tech-tag">REST APIs</span>
+                <span class="tech-tag">Git</span>
+                <span class="tech-tag">Azure</span>
+                <span class="tech-tag">Microsoft Office</span>
+                <span class="tech-tag">Adobe Creative Suite</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="resume-section">
+            <h3>Achievements & Awards</h3>
+            <div class="resume-item">
+              <ul>
+                <li><strong>PSITE-NCR Most Outstanding ITE Student Awardee</strong> - Recognition for academic excellence in Information Technology Education</li>
+                <li><strong>Arellano University Inter-Branch Research Colloquium 2023</strong> - 1st Place in System Software Development Category</li>
+                <li><strong>Magna Cum Laude Graduate</strong> - Arellano University Jose Rizal Campus Batch 2023</li>
+                <li><strong>College Dean's Lister</strong> - Consistent academic excellence (2019-2023)</li>
+                <li><strong>Research Excellence</strong> - Published research in software development methodologies</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="resume-section">
+            <h3>Languages</h3>
+            <div class="resume-item">
+              <strong>English</strong> - Professional Working Proficiency<br>
+              <strong>Filipino</strong> - Native Speaker<br>
+              <strong>Japanese</strong> - Basic Conversational (Learning for automotive industry requirements)
+            </div>
+          </div>
+
+          <div class="resume-section">
+            <h3>Professional Qualities</h3>
+            <div class="resume-item">
+              <ul>
+                <li><strong>Problem-Solving:</strong> Strong analytical skills with systematic approach to complex technical challenges</li>
+                <li><strong>Adaptability:</strong> Quick learner with ability to adapt to new technologies and methodologies</li>
+                <li><strong>Team Collaboration:</strong> Effective communicator with experience in cross-functional teams</li>
+                <li><strong>Attention to Detail:</strong> Meticulous approach to coding standards and quality assurance</li>
+                <li><strong>Initiative:</strong> Self-motivated with proactive approach to professional development</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="resume-section">
+            <h3>Contact Information</h3>
+            <div class="resume-item">
+              <strong>Email:</strong> <a href="mailto:bruzacmaestro@gmail.com" style="color: #00e5ff;">bruzacmaestro@gmail.com</a><br>
+              <strong>Phone:</strong> <a href="tel:+639184004550" style="color: #00e5ff;">+63 918 400 4550</a><br>
+              <strong>Location:</strong> 318 Gov. Pascual Catmon, Malabon City, Metro Manila<br>
+              <strong>LinkedIn:</strong> <a href="https://linkedin.com/in/yourlinkedin" target="_blank" style="color: #00e5ff;">linkedin.com/in/arnelbruza</a><br>
+              <strong>GitHub:</strong> <a href="https://github.com/yourgithub" target="_blank" style="color: #00e5ff;">github.com/arnelbruza</a>
+            </div>
+          </div>
+        `
+      }
+    };
+
+    function openProject(projectId) {
+      const project = projects[projectId];
+      const panel = document.getElementById('projectPanel');
+      const title = document.getElementById('panelTitle');
+      const content = document.getElementById('panelContent');
+
+      title.textContent = project.title;
+
+      if (project.isResume) {
+        content.innerHTML = project.content;
+      } else {
+        content.innerHTML = `
+          <div class="project-description">
+            ${project.description}
+          </div>
+          <div class="tech-tags">
+            ${project.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+          </div>
+          <div class="project-links">
+            <a href="${project.codeUrl}" target="_blank" class="project-btn">
+              <i class="icon">📝</i> View Code
+            </a>
+            <a href="${project.demoUrl}" target="_blank" class="project-btn">
+              <i class="icon">🚀</i> Live Demo
+            </a>
+          </div>
+        `;
+      }
+
+      panel.classList.add('active');
+      document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    }
+
+    function closePanel() {
+      const panel = document.getElementById('projectPanel');
+      panel.classList.remove('active');
+      document.body.style.overflow = 'auto'; // Restore scrolling
+    }
+
+    // Close panel when clicking outside
+    document.addEventListener('click', function(event) {
+      const panel = document.getElementById('projectPanel');
+      const cylinderContainer = document.querySelector('.cylinder-container');
+      const navButtons = document.querySelector('.nav-buttons');
+      
+      if (panel.classList.contains('active') && 
+          !panel.contains(event.target) && 
+          !cylinderContainer.contains(event.target) &&
+          !navButtons.contains(event.target)) {
+        closePanel();
+      }
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        closePanel();
+      }
+    });
+
+    // Smooth loading animation
+    window.addEventListener('load', function() {
+      document.body.style.opacity = '0';
+      setTimeout(() => {
+        document.body.style.transition = 'opacity 0.5s ease';
+        document.body.style.opacity = '1';
+      }, 100);
+    });
+  </script>
+
+</body>
+</html>
